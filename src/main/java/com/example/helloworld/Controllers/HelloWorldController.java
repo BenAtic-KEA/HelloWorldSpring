@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Date;
+import java.util.Objects;
 
 @RestController
 public class HelloWorldController {
@@ -21,30 +22,28 @@ public class HelloWorldController {
 
     @GetMapping("/ErDetFredag")
     public String erDetFredag(){
+        DayOfTheWeek dotw = new DayOfTheWeek();
+        return dotw.erDetFredag();
 
-        Date d = new Date();
-        if (d.getDay() == 5) {
-            return "Ja!";
-        } else {
-            return "Nej!";
-        }
     }
 
     @GetMapping("/EDF")
-    public String Edf(@RequestParam String thisDate){
-
-        String[] date = thisDate.split("-");
-        int day = Integer.parseInt(date[0]);
-        int month = Integer.parseInt(date[1]);
-        int year = Integer.parseInt(date[2]);
-
+    public String Edf(@RequestParam(defaultValue = "nothing") String thisDate){
         DayOfTheWeek dotw = new DayOfTheWeek();
-        int today = dotw.dayOfTheWeek(day,month,year);
+        if(thisDate.equals("nothing")) {
+            return dotw.erDetFredag();
+        } else {
+            String[] date = thisDate.split("-");
+            int day = Integer.parseInt(date[0]);
+            int month = Integer.parseInt(date[1]);
+            int year = Integer.parseInt(date[2]);
+            int today = dotw.dayOfTheWeek(day, month, year);
 
-        if(today == 5){
-            return "Yes!";
-        } else
-            return "No!";
+            if (today == 5) {
+                return "Yes!";
+            } else
+                return "No!";
+        }
     }
 
 }

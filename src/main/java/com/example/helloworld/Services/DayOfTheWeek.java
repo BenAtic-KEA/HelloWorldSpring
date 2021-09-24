@@ -7,15 +7,13 @@ public class DayOfTheWeek {
 
     private int tempNumber(int day, int month, int year){
         //Date date = new Date();
-        int h;
         //int day = 30; //date.getDay();
         //int month = 8; //date.getMonth();
         //int year = 2020; //date.getYear();
+        int h;
         int century = year/100;
         int yearOfTheCentury = year%100;
-
         h = (day + ((13*(month+1))/5) + yearOfTheCentury + (yearOfTheCentury/4) + ( century/4) - (2*century))%7;
-
         return h;
     }
 
@@ -25,6 +23,16 @@ public class DayOfTheWeek {
 
         d = ((tempNumber+5)%7) + 1;
         return d;
+    }
+
+    public String erDetFredag(){
+
+        Date d = new Date();
+        if (d.getDay() == 5) {
+            return "Ja!";
+        } else {
+            return "Nej!";
+        }
     }
 
     /*
