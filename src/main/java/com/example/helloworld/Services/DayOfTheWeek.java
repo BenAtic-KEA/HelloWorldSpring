@@ -8,7 +8,7 @@ public class DayOfTheWeek {
     private int tempNumber(int day, int month, int year){
         Date date = new Date();
         int h;
-        //int day = 31; //date.getDay();
+        //int day = 30; //date.getDay();
         //int month = 8; //date.getMonth();
         //int year = 2020; //date.getYear();
         int century = year/100;
@@ -21,7 +21,7 @@ public class DayOfTheWeek {
 
     public int dayOfTheWeek(int day, int month, int year){
         int d;
-        int tempNumber = tempNumber(day,month,year);
+        int tempNumber = tempNumber(day, month, year);
 
         d = ((tempNumber+5)%7) + 1;
         return d;

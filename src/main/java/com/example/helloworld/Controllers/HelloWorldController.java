@@ -31,9 +31,15 @@ public class HelloWorldController {
     }
 
     @GetMapping("/EDF")
-    public int Edf(@RequestParam int day, int month, int year){
+    public int Edf(@RequestParam String thisDate){
+
+        String[] date = thisDate.split("-");
+        int day = Integer.parseInt(date[0]);
+        int month = Integer.parseInt(date[1]);
+        int year = Integer.parseInt(date[2  ]);
+
         DayOfTheWeek dotw = new DayOfTheWeek();
-        int today = dotw.dayOfTheWeek(day, month, year);
+        int today = dotw.dayOfTheWeek(day,month,year);
         return today;
     }
 
