@@ -6,7 +6,7 @@ public class DayOfTheWeek {
 
 
     private int tempNumber(int day, int month, int year){
-        Date date = new Date();
+        //Date date = new Date();
         int h;
         //int day = 30; //date.getDay();
         //int month = 8; //date.getMonth();
